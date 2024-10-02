@@ -24,7 +24,7 @@
 
   stylix.enable = true;
   stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-night-dark.yaml";
-  stylix.image = /home/ion/dotfiles/home-manager/nix/home-manager/tokyo_alley_night.jpg;
+  stylix.image = /home/ion/GitHome/nix-config/home-manager/ion/tokyo_alley_night.jpg;
   stylix.polarity = "dark"; # "light" or "either";
 
   # This value determines the Home Manager release that your configuration is
@@ -107,7 +107,7 @@
   #  /etc/profiles/per-user/ion/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
-     EDITOR = "vim";
+     EDITOR = "nvim";
   };
 
   # Let Home Manager install and manage itself.

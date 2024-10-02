@@ -77,11 +77,23 @@
         specialArgs = {inherit inputs outputs;};
         modules = [
           # > Our main nixos configuration file <
-          ./nixos/configuration.nix
+          ./nixos/desktop/configuration.nix
 
           stylix.nixosModules.stylix
         ];
       };
+
+      nixos-laptop = nixpkgs.lib.nixosSystem {
+        specialArgs = {inherit inputs outputs;};
+        modules = [
+          # > Our main nixos configuration file <
+          ./nixos/laptop/configuration.nix
+
+          stylix.nixosModules.stylix
+        ];
+      };
+ 
+
     };
 
     # Standalone home-manager configuration entrypoint
@@ -92,10 +104,21 @@
         extraSpecialArgs = {inherit chaotic stylix inputs outputs;};
         modules = [
           # > Our main home-manager configuration file <
-          ./home-manager/home.nix
+          ./home-manager/ion/home.nix
           stylix.homeManagerModules.stylix
         ];
       };
     };
+
+    "ion@nixos-laptop" = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
+        extraSpecialArgs = {inherit chaotic stylix inputs outputs;};
+        modules = [
+          # > Our main home-manager configuration file <
+          ./home-manager/ion/home.nix
+          stylix.homeManagerModules.stylix
+        ];
+      };
+
   };
 }
